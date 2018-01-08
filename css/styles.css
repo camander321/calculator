@@ -1,0 +1,10 @@
+body {
+  color: blue;
+}
+
+.button {
+  height: 3em;
+  width: 4em;
+  text-align: center;
+  font-size: 1.5em;
+}
