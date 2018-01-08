@@ -1,62 +1,56 @@
-// var add = function(number1, number2) {
-//   return number1 + number2;
-// };
-//
-// var subtract = function(number1, number2) {
-//   return number1 - number2;
-// };
-//
-// var multiply = function(number1, number2) {
-//   return number1 * number2;
-// };
-//
-// var divide = function(number1, number2) {
-//   return number1 / number2;
-// };
-//
-// var number1 = parseInt(prompt("Enter a number:"));
-// var number2 = parseInt(prompt("Enter another number:"));
-// var result = divide(number1, number2);
-// alert(result);
 
 var input = 0;
 var result = 0;
-var operation;
+var operation = "";
+
+var updateNumber = function(number) {
+  var total = document.getElementById("total");
+  total.innerHTML = number.toString();
+}
 
 $(".button").click(function () {
   input = input * 10;
   input = input + parseInt($(this).html());
-  // alert(input);
+  updateNumber(input);
  });
 
  $(".operator").click(function () {
-
+   var isFirst = operation === "";
    operation = $(this).html().trim();
 
-   if (operation === "+") {
-     result = result + input;
-   } else if (operation === "-") {
-     result = result - input;
-   } else if (operation === "/") {
-     result = result / input;
-   } else if (operation === "*") {
-     result = result * input;
+   if (!isFirst) {
+     if (operation === "+") {
+       result = result + input;
+     } else if (operation === "-") {
+       result = result - input;
+     } else if (operation === "/") {
+       result = result / input;
+     } else if (operation === "*") {
+       result = result * input;
+     }
+   } else {
+     result = input;
    }
-   alert(result);
+
+   if (operation === "CLR") {
+     result = 0;
+     operation = "";
+   }
+   updateNumber(result);
    input = 0;
-  //  alert(value1 + " " + operation);
   });
 
   $(".equals").click(function () {
     if (operation === "+") {
-      alert(result + input);
+      result = result + input;
     } else if (operation === "-") {
-      alert(result - input);
+      result = result - input;
     } else if (operation === "/") {
-      alert(result / input);
+      result = result / input;
     } else if (operation === "*") {
-      alert(result * input);
+      result = result * input;
     }
+    updateNumber(result);
     input=0;
     result=0;
     operation="";
